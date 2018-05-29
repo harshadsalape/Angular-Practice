@@ -1,0 +1,22 @@
+welcome to details
+<br> {{details|json}}
+
+<form #form="ngForm" (ngSubmit)="save(form)">
+    <input type="text" [(ngModel)]="details.id" name="id" #id="ngModel" required/> <br>
+    
+    <span *ngIf="id.errors?.required && (id.dirty|| form.submitted)">required id</span>    <br>
+
+    <span *ngIf="id.invalid && (id.dirty|| form.submitted)">id invalid</span>    <br>
+    
+    <input type="text" [(ngModel)]="details.name" name="name" #name="ngModel" required minlength="3" maxlength="10"/>
+    
+    <span  *ngIf="name.errors?.required && (name.dirty|| form.submitted)">name required</span>    <br>
+    
+    <span *ngIf="name.errors?.minlength && (name.dirty|| form.submitted)">Enter min 3 char</span>    <br>
+    
+    <span  *ngIf="name.invalid && (name.dirty|| form.submitted)">invalid name</span>    <br>
+    
+    <input type="text" [(ngModel)]="details.address" name="address" #address="ngModel" />
+  
+    <button type="submit" [disabled]="form.invalid">Save</button>
+</form>
